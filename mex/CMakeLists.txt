@@ -74,7 +74,10 @@ endif()
 find_package(Matlab REQUIRED COMPONENTS MEX_COMPILER MX_LIBRARY ENG_LIBRARY)
 
 # Download and find libigl
-gptoolbox_download_libigl()
+find_package(LIBIGL)
+if (NOT LIBIGL_FOUND)
+	gptoolbox_download_libigl()
+endif()
 find_package(LIBIGL REQUIRED)
 
 if(WITH_ELTOPO)
